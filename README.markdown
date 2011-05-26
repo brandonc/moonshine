@@ -6,8 +6,9 @@
 
     string html = DownBlouse.DownBlouse.Markdownify(input);
 
-Or if you don't want smartypants[1] character encoding:
+Or if you don't want [smartypants][] character encoding:
 
     string html = DownBlouse.DownBlouse.Markdownify(input, false);
 
 [markdown]: http://daringfireball.net/projects/markdown
+[smartypants]: http://daringfireball.net/projects/smartypants/
