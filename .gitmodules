@@ -1,0 +1,3 @@
+[submodule "lib/upskirt"]
+	path = lib/upskirt
+	url = git@github.com:brandonc/upskirt.git
