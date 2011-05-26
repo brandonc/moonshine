@@ -149,7 +149,16 @@ namespace DownBlouse {
         [DllImport("libupskirt.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr bufnew(uint size);
 
+
+#if NET_3_5
+        public static string Markdownify(string s) {
+            return Markdownify(s, true);
+        }
+
+        public static string Markdownify(string s, bool smartypants) {
+#else
         public static string Markdownify(string s, bool smartypants = true) {
+#endif
             mkd_renderer renderer = new mkd_renderer();
 
             buf input;

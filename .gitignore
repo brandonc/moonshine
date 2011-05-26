@@ -43,4 +43,5 @@ _ReSharper*/
 # Office Temp Files
 ~$*
 
+NET_3_5/
 package/*.nupkg

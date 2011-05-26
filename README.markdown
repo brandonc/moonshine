@@ -1,6 +1,9 @@
-# DownBlouse #
+DownBlouse
+==========
 
-*A .NET wrapper and win32 port of [upskirt][], a [markdown][] library*
+> A .NET wrapper and win32 port of [upskirt][], a [markdown][] library
+
+libupskirt.dll (included) is required for linkage. Also included is a simple console app for executing upskirt against markdown files.
 
 # Usage
 
