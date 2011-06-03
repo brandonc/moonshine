@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace DownBlouse {
     [StructLayout(LayoutKind.Sequential, CharSet=CharSet.Ansi)]
-    public struct buf {
+    struct buf {
         [MarshalAs(UnmanagedType.LPStr)]
 	    public string data;	    /* actual character data */
         public uint size;	    /* size of the string */
@@ -15,64 +15,64 @@ namespace DownBlouse {
         public int @ref;        /* reference count */
     };
 
-    public enum mkd_autolink {
+    enum mkd_autolink {
         MKDA_NOT_AUTOLINK,
         MKDA_NORMAL,
         MKDA_EMAIL,
     }
 
-    public delegate void mkd_renderer_blockcode(ref buf ob, ref buf text, ref buf lang, System.IntPtr opaque);
+    delegate void mkd_renderer_blockcode(ref buf ob, ref buf text, ref buf lang, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_blockquote(ref buf ob, ref buf text, System.IntPtr opaque);
+    delegate void mkd_renderer_blockquote(ref buf ob, ref buf text, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_blockhtml(ref buf ob, ref buf text, System.IntPtr opaque);
+    delegate void mkd_renderer_blockhtml(ref buf ob, ref buf text, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_header(ref buf ob, ref buf text, int level, System.IntPtr opaque);
+    delegate void mkd_renderer_header(ref buf ob, ref buf text, int level, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_hrule(ref buf ob, System.IntPtr opaque);
+    delegate void mkd_renderer_hrule(ref buf ob, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_list(ref buf ob, ref buf text, int flags, System.IntPtr opaque);
+    delegate void mkd_renderer_list(ref buf ob, ref buf text, int flags, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_listitem(ref buf ob, ref buf text, int flags, System.IntPtr opaque);
+    delegate void mkd_renderer_listitem(ref buf ob, ref buf text, int flags, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_paragraph(ref buf ob, ref buf text, System.IntPtr opaque);
+    delegate void mkd_renderer_paragraph(ref buf ob, ref buf text, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_table(ref buf ob, ref buf header, ref buf body, System.IntPtr opaque);
+    delegate void mkd_renderer_table(ref buf ob, ref buf header, ref buf body, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_table_row(ref buf ob, ref buf text, System.IntPtr opaque);
+    delegate void mkd_renderer_table_row(ref buf ob, ref buf text, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_table_cell(ref buf ob, ref buf text, int flags, System.IntPtr opaque);
+    delegate void mkd_renderer_table_cell(ref buf ob, ref buf text, int flags, System.IntPtr opaque);
 
-    public delegate int mkd_renderer_autolink(ref buf ob, ref buf link, mkd_autolink type, System.IntPtr opaque);
+    delegate int mkd_renderer_autolink(ref buf ob, ref buf link, mkd_autolink type, System.IntPtr opaque);
 
-    public delegate int mkd_renderer_codespan(ref buf ob, ref buf text, System.IntPtr opaque);
+    delegate int mkd_renderer_codespan(ref buf ob, ref buf text, System.IntPtr opaque);
 
-    public delegate int mkd_renderer_double_emphasis(ref buf ob, ref buf text, System.IntPtr opaque);
+    delegate int mkd_renderer_double_emphasis(ref buf ob, ref buf text, System.IntPtr opaque);
 
-    public delegate int mkd_renderer_emphasis(ref buf ob, ref buf text, System.IntPtr opaque);
+    delegate int mkd_renderer_emphasis(ref buf ob, ref buf text, System.IntPtr opaque);
 
-    public delegate int mkd_renderer_image(ref buf ob, ref buf link, ref buf title, ref buf alt, System.IntPtr opaque);
+    delegate int mkd_renderer_image(ref buf ob, ref buf link, ref buf title, ref buf alt, System.IntPtr opaque);
 
-    public delegate int mkd_renderer_linebreak(ref buf ob, System.IntPtr opaque);
+    delegate int mkd_renderer_linebreak(ref buf ob, System.IntPtr opaque);
 
-    public delegate int mkd_renderer_link(ref buf ob, ref buf link, ref buf title, ref buf content, System.IntPtr opaque);
+    delegate int mkd_renderer_link(ref buf ob, ref buf link, ref buf title, ref buf content, System.IntPtr opaque);
 
-    public delegate int mkd_renderer_raw_html_tag(ref buf ob, ref buf tag, System.IntPtr opaque);
+    delegate int mkd_renderer_raw_html_tag(ref buf ob, ref buf tag, System.IntPtr opaque);
 
-    public delegate int mkd_renderer_triple_emphasis(ref buf ob, ref buf text, System.IntPtr opaque);
+    delegate int mkd_renderer_triple_emphasis(ref buf ob, ref buf text, System.IntPtr opaque);
 
-    public delegate int mkd_renderer_strikethrough(ref buf ob, ref buf text, System.IntPtr opaque);
+    delegate int mkd_renderer_strikethrough(ref buf ob, ref buf text, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_entity(ref buf ob, ref buf entity, System.IntPtr opaque);
+    delegate void mkd_renderer_entity(ref buf ob, ref buf entity, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_normal_text(ref buf ob, ref buf text, System.IntPtr opaque);
+    delegate void mkd_renderer_normal_text(ref buf ob, ref buf text, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_doc_header(ref buf ob, System.IntPtr opaque);
+    delegate void mkd_renderer_doc_header(ref buf ob, System.IntPtr opaque);
 
-    public delegate void mkd_renderer_doc_footer(ref buf ob, System.IntPtr opaque);
+    delegate void mkd_renderer_doc_footer(ref buf ob, System.IntPtr opaque);
 
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public struct mkd_renderer {
+    struct mkd_renderer {
         public mkd_renderer_blockcode blockcode;
 
         public mkd_renderer_blockquote blockquote;
@@ -124,7 +124,7 @@ namespace DownBlouse {
         public mkd_renderer_doc_footer doc_footer;
 
         // void*
-        public System.IntPtr opaque;
+        public IntPtr opaque;
     }
 
     public class DownBlouse {
@@ -149,6 +149,12 @@ namespace DownBlouse {
         [DllImport("libupskirt.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr bufnew(uint size);
 
+        public static string UpskirtVersion()
+        {
+            int maj = 0, min = 0, rev = 0;
+            ups_version(ref maj, ref min, ref rev);
+            return String.Format("{0}.{1}.{2}", maj, min, rev);
+        }
 
 #if NET_3_5
         public static string Markdownify(string s) {
