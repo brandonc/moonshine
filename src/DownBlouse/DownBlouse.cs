@@ -127,6 +127,18 @@ namespace DownBlouse {
         public IntPtr opaque;
     }
 
+    [Flags]
+    public enum MarkdownExtensions {
+        None = 0,
+        NoIntraEmphasis = 1 << 0,
+        Tables = 1 << 1,
+        FencedCode = 1 << 2,
+        AutoLink = 1 << 3,
+        StrikeThrough = 1 << 4,
+        LaxHtmlBlocks = 1 << 5,
+        SpaceHeaders = 1 << 6,
+	}
+
     public class DownBlouse {
         [DllImport("libupskirt.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void upshtml_renderer(ref mkd_renderer renderer, uint render_flags);
@@ -161,9 +173,17 @@ namespace DownBlouse {
             return Markdownify(s, true);
         }
 
+        public static string Markdownify(string s, MarkdownExtensions extensions) {
+            return Markdownify(s, extensions, true);
+        }
+
         public static string Markdownify(string s, bool smartypants) {
+            return Markdownify(s, MarkdownExtensions.None, smartypants);
+        }
+
+        public static string Markdownify(string s, MarkdownExtensions extensions, bool smartypants) {
 #else
-        public static string Markdownify(string s, bool smartypants = true) {
+        public static string Markdownify(string s, MarkdownExtensions extensions = MarkdownExtensions.None, bool smartypants = true) {
 #endif
             mkd_renderer renderer = new mkd_renderer();
 
@@ -177,7 +197,7 @@ namespace DownBlouse {
             IntPtr poutput = bufnew(64);
 
             upshtml_renderer(ref renderer, (uint)0);
-            ups_markdown(poutput, ref input, ref renderer, (uint)0);
+            ups_markdown(poutput, ref input, ref renderer, (uint)extensions);
             upshtml_free_renderer(ref renderer);
 
             buf output;
