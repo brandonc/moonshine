@@ -50,7 +50,12 @@ Or if you don't want [smartypants][] character encoding:
 
     string html = DownBlouse.DownBlouse.Markdownify(input, false);
 
+# Thank You to Contributors
+
+[jbevain][]: Markdown extensions
+
 [upskirt]: https://github.com/tanoku/upskirt
 [markdown]: http://daringfireball.net/projects/markdown
 [smartypants]: http://daringfireball.net/projects/smartypants/
 [MarkdownSharp]: http://code.google.com/p/markdownsharp/
+[jbevain]: https://github.com/jbevain
