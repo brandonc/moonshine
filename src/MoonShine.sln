@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownBlouse", "DownBlouse\DownBlouse.csproj", "{AB54365F-D0C1-49B5-AFA4-3FA0296A5CCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoonShine", "MoonShine\MoonShine.csproj", "{AB54365F-D0C1-49B5-AFA4-3FA0296A5CCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownBlouse.Console", "DownBlouse.Console\DownBlouse.Console.csproj", "{E04DBA71-AC09-4D8A-85F8-196280C83565}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoonShine.Console", "MoonShine.Console\MoonShine.Console.csproj", "{E04DBA71-AC09-4D8A-85F8-196280C83565}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{90DB6062-8DA0-43A9-9D4F-2FBA13A98868}"
 	ProjectSection(SolutionItems) = preProject

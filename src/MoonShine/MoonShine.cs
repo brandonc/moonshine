@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace DownBlouse {
+namespace Sundown {
     [StructLayout(LayoutKind.Sequential, CharSet=CharSet.Ansi)]
     struct buf {
         [MarshalAs(UnmanagedType.LPStr)]
@@ -139,32 +139,32 @@ namespace DownBlouse {
         SpaceHeaders = 1 << 6,
 	}
 
-    public class DownBlouse {
-        [DllImport("libupskirt.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void upshtml_renderer(ref mkd_renderer renderer, uint render_flags);
+    public class MoonShine {
+        [DllImport("libsundown.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void sdhtml_renderer(ref mkd_renderer renderer, uint render_flags);
 
-        [DllImport("libupskirt.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void upshtml_free_renderer(ref mkd_renderer renderer);
+        [DllImport("libsundown.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void sdhtml_free_renderer(ref mkd_renderer renderer);
 
-        [DllImport("libupskirt.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void upshtml_smartypants(IntPtr ob, IntPtr text);
+        [DllImport("libsundown.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void sdhtml_smartypants(IntPtr ob, IntPtr text);
 
-        [DllImport("libupskirt.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void ups_markdown(IntPtr ob, ref buf ib, ref mkd_renderer renderer, uint extensions);
+        [DllImport("libsundown.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void sd_markdown(IntPtr ob, ref buf ib, ref mkd_renderer renderer, uint extensions);
 
-        [DllImport("libupskirt.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void ups_version(ref int ver_major, ref int ver_minor, ref int ver_revision);
+        [DllImport("libsundown.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void sd_version(ref int ver_major, ref int ver_minor, ref int ver_revision);
 
-        [DllImport("libupskirt.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libsundown.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void bufrelease(IntPtr buf);
 
-        [DllImport("libupskirt.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("libsundown.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr bufnew(uint size);
 
-        public static string UpskirtVersion()
+        public static string SundownVersion()
         {
             int maj = 0, min = 0, rev = 0;
-            ups_version(ref maj, ref min, ref rev);
+            sd_version(ref maj, ref min, ref rev);
             return String.Format("{0}.{1}.{2}", maj, min, rev);
         }
 
@@ -196,15 +196,15 @@ namespace DownBlouse {
             
             IntPtr poutput = bufnew(64);
 
-            upshtml_renderer(ref renderer, (uint)0);
-            ups_markdown(poutput, ref input, ref renderer, (uint)extensions);
-            upshtml_free_renderer(ref renderer);
+            sdhtml_renderer(ref renderer, (uint)0);
+            sd_markdown(poutput, ref input, ref renderer, (uint)extensions);
+            sdhtml_free_renderer(ref renderer);
 
             buf output;
 
             if (smartypants) {
                 IntPtr psmarty = bufnew(128);
-                upshtml_smartypants(psmarty, poutput);
+                sdhtml_smartypants(psmarty, poutput);
                 output = (buf)Marshal.PtrToStructure(psmarty, typeof(buf));
                 bufrelease(psmarty);
             } else {

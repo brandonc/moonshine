@@ -1,12 +1,12 @@
-<h1>DownBlouse</h1>
+<h1>MoonShine</h1>
 <blockquote>
-<p>A .NET wrapper and win32 port of <a href="https://github.com/tanoku/upskirt">upskirt</a>, the <a href="http://daringfireball.net/projects/markdown">markdown</a> library</p>
+<p>A .NET wrapper for (with win32 port of) <a href="https://github.com/tanoku/sundown">sundown</a>, the <a href="http://daringfireball.net/projects/markdown">markdown</a> library</p>
 </blockquote>
-<p>libupskirt.dll (included) is required for linkage. Also included is a simple console app for executing upskirt against markdown files.</p>
+<p>libsundown.dll (included) is required for linkage. Also included is a simple console app for executing upskirt against markdown files.</p>
 
-<p>DownBlouse is at least 20x faster than <a href="http://code.google.com/p/markdownsharp/">MarkdownSharp</a> when run against MarkdownSharp's own benchmark app.</p>
+<p>MoonShine is at least 20x faster than <a href="http://code.google.com/p/markdownsharp/">MarkdownSharp</a> when run against MarkdownSharp's own benchmark app.</p>
 
-<p><img src="http://i.imgur.com/gIRuN.png" alt="MarkdownSharp vs. DownBlouse">
+<p><img src="https://spreadsheets.google.com/spreadsheet/oimg?key=0ArwgxSsSwOykdFQyam5kb1JNSGdBbXVFN2hxVjZqdWc&amp;oid=1&amp;zx=ux34vk7qqqf1" alt="MarkdownSharp vs. MoonShine">
 </p>
 
 <pre><code>MarkdownSharp v1.13 benchmark, takes 10 ~ 30 seconds...
@@ -26,7 +26,7 @@ input string length: 354431
 Benchmark completed in 7.752s
 
 
-DownBlouse v1.14.2 benchmark, takes 10 ~ 30 seconds...
+MoonShine v1.14.2 benchmark, takes 10 ~ 30 seconds...
 
 input string length: 475
 4000 iterations in 162 ms (0.0405 ms per iteration)
@@ -45,12 +45,12 @@ Benchmark completed in 0.333s
 
 <h1>Usage</h1>
 
-<pre><code>string html = DownBlouse.DownBlouse.Markdownify(input);
+<pre><code>string html = Sundown.MoonShine.Markdownify(input);
 </code></pre>
 
 <p>Or if you don't want <a href="http://daringfireball.net/projects/smartypants/">smartypants</a> character encoding:</p>
 
-<pre><code>string html = DownBlouse.DownBlouse.Markdownify(input, false);
+<pre><code>string html = Sundown.MoonShine.Markdownify(input, false);
 </code></pre>
 
 <h1>Thank You to Contributors</h1>

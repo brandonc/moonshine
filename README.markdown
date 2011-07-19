@@ -1,13 +1,13 @@
-DownBlouse
+MoonShine
 ==========
 
-> A .NET wrapper and win32 port of [upskirt][], the [markdown][] library
+> A .NET wrapper for (with win32 port of) [sundown][], the [markdown][] library
 
-libupskirt.dll (included) is required for linkage. Also included is a simple console app for executing upskirt against markdown files.
+libsundown.dll (included) is required for linkage. Also included is a simple console app for executing upskirt against markdown files.
 
-DownBlouse is at least 20x faster than [MarkdownSharp][] when run against MarkdownSharp's own benchmark app.
+MoonShine is at least 20x faster than [MarkdownSharp][] when run against MarkdownSharp's own benchmark app.
 
-![MarkdownSharp vs. DownBlouse](http://i.imgur.com/gIRuN.png)
+![MarkdownSharp vs. MoonShine](https://spreadsheets.google.com/spreadsheet/oimg?key=0ArwgxSsSwOykdFQyam5kb1JNSGdBbXVFN2hxVjZqdWc&oid=1&zx=ux34vk7qqqf1)
 
     MarkdownSharp v1.13 benchmark, takes 10 ~ 30 seconds...
 
@@ -26,7 +26,7 @@ DownBlouse is at least 20x faster than [MarkdownSharp][] when run against Markdo
     Benchmark completed in 7.752s
 
 
-    DownBlouse v1.14.2 benchmark, takes 10 ~ 30 seconds...
+    MoonShine v1.14.2 benchmark, takes 10 ~ 30 seconds...
 
     input string length: 475
     4000 iterations in 162 ms (0.0405 ms per iteration)
@@ -44,17 +44,17 @@ DownBlouse is at least 20x faster than [MarkdownSharp][] when run against Markdo
 
 # Usage
 
-    string html = DownBlouse.DownBlouse.Markdownify(input);
+    string html = Sundown.MoonShine.Markdownify(input);
 
 Or if you don't want [smartypants][] character encoding:
 
-    string html = DownBlouse.DownBlouse.Markdownify(input, false);
+    string html = Sundown.MoonShine.Markdownify(input, false);
 
 # Thank You to Contributors
 
 [jbevain][]: Markdown extensions
 
-[upskirt]: https://github.com/tanoku/upskirt
+[sundown]: https://github.com/tanoku/sundown
 [markdown]: http://daringfireball.net/projects/markdown
 [smartypants]: http://daringfireball.net/projects/smartypants/
 [MarkdownSharp]: http://code.google.com/p/markdownsharp/

@@ -8,8 +8,8 @@
     <ProjectGuid>{E04DBA71-AC09-4D8A-85F8-196280C83565}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DownBlouse.ConsoleApp</RootNamespace>
-    <AssemblyName>downblouse</AssemblyName>
+    <RootNamespace>MoonShine.ConsoleApp</RootNamespace>
+    <AssemblyName>bootleg</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -48,9 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\downblouse\DownBlouse.csproj">
+    <ProjectReference Include="..\MoonShine\MoonShine.csproj">
       <Project>{AB54365F-D0C1-49B5-AFA4-3FA0296A5CCD}</Project>
-      <Name>DownBlouse</Name>
+      <Name>MoonShine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
